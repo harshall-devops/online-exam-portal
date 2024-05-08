@@ -6,6 +6,11 @@ pipeline {
 	    jdk "OracleJDK11"
 	    
 	}
+
+    environment {
+            CI = 'true'
+npm_config_prefix = '/home/ubuntu/.npm-global'
+        }
     
     stages {
 
@@ -14,18 +19,15 @@ pipeline {
                 git branch: 'dev', url: 'https://github.com/harshall-devops/online-exam-portal.git'
             }
         }
-
-
-        stage ('CODE ANALYSIS WITH CHECKSTYLE'){
+        stage('Build and Test') {
             steps {
-                sh 'mvn checkstyle:checkstyle'
-            }
-            post {
-                success {
-                    echo 'Generated Analysis Result'
-                }
+                sh 'npm install' // Install dependencies
+                sh 'npm test'     // Run tests
             }
         }
+
+
+       
 
         stage('SonarQube analysis') {
             steps {
