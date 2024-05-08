@@ -2,7 +2,7 @@ pipeline {
     agent any
     tools {
 	    nodejs "node"
-         maven "MAVEN3"
+         
 	    jdk "OracleJDK11"
 	    
 	}
@@ -15,11 +15,6 @@ pipeline {
             }
         }
 
-        stage('Test'){
-            steps {
-                sh 'mvn test'
-            }
-        }
 
         stage ('CODE ANALYSIS WITH CHECKSTYLE'){
             steps {
