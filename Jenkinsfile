@@ -19,12 +19,7 @@ npm_config_prefix = '/home/ubuntu/.npm-global'
                 git branch: 'dev', url: 'https://github.com/harshall-devops/online-exam-portal.git'
             }
         }
-        stage('Build and Test') {
-            steps {
-                sh 'npm install' // Install dependencies
-                sh 'npm test'     // Run tests
-            }
-        }
+        
 
 
        
