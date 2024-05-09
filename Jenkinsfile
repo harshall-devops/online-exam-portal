@@ -24,20 +24,7 @@ npm_config_prefix = '/home/ubuntu/.npm-global'
 
        
 
-        stage('SonarQube analysis') {
-            steps {
-                script {
-                    def scannerHome = tool 'sonar4.7'
-                    withSonarQubeEnv('sonar') {
-                        sh '''${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=Exam-portal \
-                           -Dsonar.projectName=Exam-Portal \
-                           -Dsonar.projectVersion=1.0 \
-                           '''
-                    }
-                }
-            }
-        }
-
+       
         stage('Build Backend Image') {
             steps {
                 script {
